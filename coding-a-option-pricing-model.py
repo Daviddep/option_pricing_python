@@ -12,16 +12,18 @@ def black_scholes(s, t, sigma, r, k, option_type):
     d1 = (np.log(s / k) + (r + (sigma**2) / 2) * t) / (sigma * np.sqrt(t))
     d2 = d1 - sigma * np.sqrt(t)
 
-    if option_type == "C":  # Call option
+# if we choose a Call option
+    if option_type == "C":  
         price = s * norm_cdf(d1) - k * np.exp(-r * t) * norm_cdf(d2)
-    elif option_type == "P":  # Put option
+# if we choose a Put option        
+    elif option_type == "P":
         price = k * np.exp(-r * t) * norm_cdf(-d2) - s * norm_cdf(-d1)
     else:
         raise ValueError("Invalid option type. Use 'C' for Call and 'P' for Put.")
 
     return price
 
-# Get user inputs
+# user inputs
 s = float(input("The price of the underlying asset is: "))  
 t = float(input("The annualized time to maturity is: "))     
 sigma = float(input("The annualized implied volatility is: "))  
@@ -45,10 +47,10 @@ plt.ylabel("Option Price")
 plt.title("Black-Scholes Option Price vs. Stock Price")
 plt.legend()
 plt.grid()
-plt.show(block=False)  # <---- Allows multiple plots to show at once
+plt.show(block=False)  
 
 # Graph 2: 3D Surface Plot (Stock Price vs. Time to Maturity)
-s_range = np.linspace(50, 150, 30)  # Stock price range
+s_range = np.linspace(50, 150, 30)  # Stock price range 50 to 150
 t_range = np.linspace(0.01, 2, 30)  # Time to maturity range
 
 S, T = np.meshgrid(s_range, t_range)
@@ -63,7 +65,7 @@ ax.set_ylabel("Time to Maturity (T)")
 ax.set_zlabel("Option Price")
 ax.set_title("Black-Scholes Option Price Surface")
 
-plt.show(block=False)  # <---- Keeps the first plot open
+plt.show(block=False)  # so that both plots can be displayed
 
 # Keep the plots open
 input("Press Enter to exit...")
