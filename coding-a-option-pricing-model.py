@@ -82,7 +82,7 @@ plt.show(block=False)
 
 # Graph 2: 3D Surface Plot (Stock Price vs. Time to Maturity)
 s_range = np.linspace(50, 150, 30)  # Stock price range 50 to 150
-t_range = np.linspace(0.01, 10, 30)  # Time to maturity range
+t_range = np.linspace(0.01, 2, 30)  # Time to maturity range
 
 S, T = np.meshgrid(s_range, t_range)
 Z = np.array([[black_scholes(s, t, sigma, r, k, option_type) for s in s_range] for t in t_range])
