@@ -2,6 +2,37 @@ import numpy as np
 import math  
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
+"""
+USER GUIDE
+
+What this script does
+It prices a European call or put with the Black Scholes model, then shows how price moves with the spot and with time.
+It assumes frictionless markets, continuous trading, a constant risk free rate, and a constant volatility.
+
+Input checklist
+1) Spot price S
+   Use the latest mid price, in the same currency as the strike.
+
+2) Time to maturity t in years
+   If you only know calendar days, divide by 365.
+   Examples
+   30 calendar days  -> t = 30 / 365 = 0.0822
+
+3) Volatility sigma as an annualized decimal
+   If the market quotes 20 percent, enter 0.20.
+
+4) Risk free rate r as a decimal
+   Use a rate that matches the option expiry. 
+   Examples
+   4 percent yearly -> r = 0.04
+
+5) Strike k
+   Must be in the same units as the spot price.
+
+6) Option type
+   C for call, P for put.
+
+"""
 
 def norm_cdf(x):
     """Compute the CDF of the standard normal distribution"""
@@ -51,7 +82,7 @@ plt.show(block=False)
 
 # Graph 2: 3D Surface Plot (Stock Price vs. Time to Maturity)
 s_range = np.linspace(50, 150, 30)  # Stock price range 50 to 150
-t_range = np.linspace(0.01, 2, 30)  # Time to maturity range
+t_range = np.linspace(0.01, 10, 30)  # Time to maturity range
 
 S, T = np.meshgrid(s_range, t_range)
 Z = np.array([[black_scholes(s, t, sigma, r, k, option_type) for s in s_range] for t in t_range])
@@ -68,4 +99,4 @@ ax.set_title("Black-Scholes Option Price Surface")
 plt.show(block=False)  # so that both plots can be displayed
 
 # Keep the plots open
-input("Press Enter to exit...")
+input("Press Enter to exit!")
