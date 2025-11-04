@@ -2,21 +2,15 @@
 
 A Python implementation of the Black-Scholes model for pricing European call and put options, with interactive visualizations.
 
-## What It Does
-
-- Prices European calls and puts using the Black-Scholes formula
-- Plots option price sensitivity to spot price
-- Generates 3D surface showing price evolution over time and spot movements
-
-## Requirements
+## Requirement
 
 ```bash
 pip install numpy matplotlib
 ```
 
-## Usage
+## How to run
 
-Run the script and provide inputs when prompted:
+Run the script :
 
 ```bash
 python3 coding-a-option-pricing-model.py
